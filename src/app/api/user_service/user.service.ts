@@ -8,7 +8,7 @@ export class UserService {
   private password;
   private currentUser;
 
-  constructor() { 
+  constructor() {
     this.isUserLoggedIn = false;
     this.currentUser = {};
   }

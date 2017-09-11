@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../api/user_service/user.service';
+import { LoginService } from '../api/login_service/login.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,61 +10,25 @@ import { UserService } from '../user.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router: Router, private user:UserService) { }
+  constructor(private router: Router, private user: UserService, private login: LoginService) { }
 
   ngOnInit() {
   }
 
-  loginUser(e) {
-    //e.preventDefault();
+  loginUser(e, email, password) {
 
-    //input data
-    var email = e.target.elements[0].value;
-    var password = e.target.elements[1].value;
+    if (this.login.userExists(email, password)) {
 
-    //console.log("Email: ", email);
-    //console.log("Password: ", password);
-
-    //users from localStorage
-    var users = JSON.parse(localStorage.getItem('users')) || [];
-    console.log("Users from LS: ", users);
-    
-    //filtered users from localStorage
-    var filteredUsers = users.filter(function(user) {
-      return user.email === email && user.password === password;
-    });
-    console.log("Filtered users from LC: ", filteredUsers);
-
-    if(filteredUsers.length) {
-      //user already exists in local storage
-      this.user.setUserLoggedIn();
       this.router.navigate(['dashboard']);
-      localStorage.setItem('currentUser', JSON.stringify({email: email, password: password}));
-      this.user.setCurrentUser({email:email, password:password});
+      this.login.setCurrentUser(email, password);
 
-      console.log("CurrentUser from localStorage: ", localStorage.getItem('currentUser'));
-      console.log("CurrentUser from service: ", this.user.getCurrentUser());
     }else {
-      //user is just logged in
-      var newUser = {
-        email: email,
-        password: password
-      };
-      users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users));
-      console.log("Users from local storage after addition: ", JSON.parse(localStorage.getItem('users')));
-      localStorage.setItem('currentUser', JSON.stringify(newUser));
-      this.user.setCurrentUser(newUser);
 
-      console.log("CurrentUser from localStorage: ", localStorage.getItem('currentUser'));
-      console.log("CurrentUser from service: ", this.user.getCurrentUser());
+      this.login.addUserToLocalStorage(email, password);
+      this.login.setCurrentUser(email, password);
+      this.router.navigate(['dashboard']);
+
     }
 
-    
-
-    
-
-
-    
   }
 }

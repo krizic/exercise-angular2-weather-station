@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../api/user_service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +10,10 @@ export class HeaderComponent implements OnInit {
 
   constructor(private user: UserService) { }
 
- 
   ngOnInit() {
-    
   }
-  
+
   showSettings() {
-    // console.log("showSettings ", this.user.getUserLoggedIn());
     return this.user.getUserLoggedIn();
   }
 

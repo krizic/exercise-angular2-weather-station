@@ -2,24 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserService } from './user.service';
-import { AuthenticationGuard } from './authentication.guard';
+import { UserService } from './api/user_service/user.service';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { LoginService } from './api/login_service/login.service';
 
 const appRoutes: Routes = [
   {
     path: 'dashboard',
     canActivate: [AuthenticationGuard],
     component: DashboardComponent
-  }, 
+  },
   {
-    path: 'login', 
+    path: 'login',
     component: LoginFormComponent
-  }, 
+  },
   { path: '',
   redirectTo: '/login',
   pathMatch: 'full'
@@ -35,10 +35,10 @@ const appRoutes: Routes = [
     DashboardComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, AuthenticationGuard],
+  providers: [UserService, LoginService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

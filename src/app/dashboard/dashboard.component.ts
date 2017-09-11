@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+
+import { UserService } from '../api/user_service/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +9,12 @@ import { UserService } from '../user.service';
 })
 export class DashboardComponent implements OnInit {
 
-  email = "anonymous@gmail.com";
-  password = "***";
+  email = 'anonymous@gmail.com';
 
   constructor(private user: UserService) {
-    
    }
 
   ngOnInit() {
     this.email = this.user.getCurrentUser().email;
-    this.password = this.user.getCurrentUser().password;
-    //console.log(this.user.getUserLoggedIn());
   }
 }

@@ -1,28 +1,33 @@
+//SCSS variables
+$gray_color: #666666;
+$lightgray_color: #D8D8D8;
+$sky_color: #00BFFF;
+$font_nova: 'Nova Flat';
+$gray_border: 0.19rem solid $gray_color;
+$lightgray_border: 0.0625rem solid $lightgray_color;
+
 header {
-    text-align: center;
-    background-color: #00BFFF;
+    background-color: $sky_color;
     color: white;
-    padding: 20px 0px;
-    margin-bottom: 30px;
+    padding: 1.25rem 1.9rem;
+    margin-bottom: 1.9rem;
 }
 .header {
-    display: grid;
-    grid-template-columns: 3fr 3fr 1fr;
+    display: flex;
+    
 }
 .title {
-    grid-column: 1;
-    font-family: 'Nova Flat';
-    font-size: 24px;
+    flex: 3;
+    font-family: $font_nova;
+    font-size: 1.5rem;
 }
 .settings {
-    grid-column: 3;
+    flex: 1;
     text-align: right;
-    padding-right: 20px; 
-
 }
 .icon {
-    background-color: #00BFFF;
-    width: 35px;
+    background-color: $sky_color;
+    width: 2.1rem;
 }
 
 
