@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../api/user_service/user.service';
 import { LoginService } from '../api/login_service/login.service';
+import { UserClass } from '../api/Classes/user';
 
 @Component({
   selector: 'app-login-form',
@@ -10,24 +10,31 @@ import { LoginService } from '../api/login_service/login.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router: Router, private user: UserService, private login: LoginService) { }
+  constructor(private router: Router, private login: LoginService) { }
+
+  currentUser: UserClass;
 
   ngOnInit() {
+    this.currentUser = this.login.getCurrentUser();
+
+    /* NOT WORKING - CHECK WITH VEDRAN */
+    if (this.currentUser == null) {
+      console.log('(loginComp - onInit) currentUser is null - go to login');
+      this.router.navigate(['login']);
+    }else {
+      console.log('(loginComp - onInit) currentUser is not null - go to dashboard');
+      this.router.navigate(['dashboard']);
+    }
   }
 
   loginUser(e, email, password) {
 
     if (this.login.userExists(email, password)) {
-
-      this.router.navigate(['dashboard']);
       this.login.setCurrentUser(email, password);
-
+      this.router.navigate(['dashboard']);
     }else {
-
       this.login.addUserToLocalStorage(email, password);
-      this.login.setCurrentUser(email, password);
       this.router.navigate(['dashboard']);
-
     }
 
   }

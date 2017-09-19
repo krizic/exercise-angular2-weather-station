@@ -29,5 +29,18 @@ header {
     background-color: $sky_color;
     width: 2.1rem;
 }
+.celsiousBtn, .logoutBtn {
+    width: 35%;
+    //margin-top: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: $gray_color;
+    border: 0.125rem solid $gray_color;
+}
 
-
+.celsiousBtn:hover , .logoutBtn:hover {
+    width: 35%;
+    //margin-top: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: $lightgray_color;
+    border: 0.125rem solid $gray_color; 
+}

@@ -5,11 +5,13 @@ $sky_color: #00BFFF;
 $font_nova: 'Nova Flat';
 $gray_border: 0.19rem solid $gray_color;
 $lightgray_border: 0.0625rem solid $lightgray_color;
+$sky_border: 0.125rem solid $sky_color;
 
 .dashboard-screen {
     display: flex;
     margin: 0rem 1.9rem;
     border-right: $gray_border;
+    font-family: $font_nova;
 }
 
 .dash-left {
@@ -26,7 +28,7 @@ $lightgray_border: 0.0625rem solid $lightgray_color;
     margin-bottom: 1.9rem;
 }
 
-.filter {
+.history {
     flex: 3;
     padding: 1.25rem 2.5rem;
     border-left: $gray_border;
@@ -46,15 +48,71 @@ $lightgray_border: 0.0625rem solid $lightgray_color;
     margin-bottom: 1.9rem;
 }
 
-.list {
+.weather-desc-container {
     flex: 3;
+    margin-top: 3rem;
     padding: 1.25rem 2.5rem 1.25rem 0.625rem;
     border-bottom: $gray_border;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
 }
-
+.weather-img > img {
+    width: 3.6rem;
+    height: 3.6rem;
+}
 .your_profile_title {
     padding-bottom: 0.75rem;
     border-bottom: $lightgray_border; 
+}
+.history-title {
+    padding-bottom: 0.75rem;
+    border-bottom: $lightgray_border; 
+}
+.history-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.history-item {
+    flex: 1;
+    border: 0.125rem solid $lightgray_color;
+    background-color: #D9F6FF;
+    flex-basis: 30%;
+    box-sizing: border-box;
+    text-align: center;
+    //vertical-align: center;
+    padding: 0.625rem;
+    margin: 0.625rem 0.625rem ;
+}
+.history-item:hover {
+    flex: 1;
+    border: $sky_border;
+    background-color: #D9F6FF;
+    flex-basis: 30%;
+    box-sizing: border-box;
+    text-align: center;
+    //vertical-align: center;
+    padding: 0.625rem;
+    margin: 0.625rem 0.625rem ;
+}
+.search-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.25rem;
+}
+.search-input {
+    flex: 1;
+    margin-right: 1.25rem;
+}
+.search-weather-btn {
+    width: 20%;
+    margin-top: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: $sky_color;
+    border: 0.125rem solid $gray_color;
 }
 
 @media (min-width: 900px) {

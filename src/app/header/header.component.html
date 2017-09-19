@@ -3,8 +3,8 @@
     Weather Station App
   </div>
 
-   <!-- It is visible only when user is logged in -->
   <div *ngIf= "showSettings()" class="settings">
-    <img class="icon" src="../assets/settings-icon.png">
+    <button class="btn btn-primary celsiousBtn" (click) = "changeScale()">{{currentScale}}</button>
+    <button class="btn btn-primary logoutBtn" (click) = "logout()">Log out</button>
   </div>
 </header>
