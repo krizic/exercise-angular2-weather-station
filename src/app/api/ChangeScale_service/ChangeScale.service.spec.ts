@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HeaderService } from './header.service';
+import { ChangeScaleService } from './ChangeScale.service';
 
 describe('HeaderService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HeaderService]
+      providers: [ChangeScaleService]
     });
   });
 
-  it('should be created', inject([HeaderService], (service: HeaderService) => {
+  it('should be created', inject([ChangeScaleService], (service: ChangeScaleService) => {
     expect(service).toBeTruthy();
   }));
 });

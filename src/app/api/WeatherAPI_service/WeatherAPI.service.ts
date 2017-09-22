@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { UserClass } from '../Classes/user';
-import { WeatherClass } from '../Classes/weather';
-import { LoginService } from '../login_service/login.service';
-import { HeaderService } from '../header_service/header.service';
+import { User } from '../Classes/user';
+import { Weather } from '../Classes/weather';
+import { UserAuthenticationService } from '../UserAuthentication_service/UserAuthentication.service';
+import { ChangeScaleService } from '../ChangeScale_service/ChangeScale.service';
 
 @Injectable()
-export class DashboardService {
+export class WeatherAPIService {
 
-  constructor(private login: LoginService, private header: HeaderService, private http: Http) {
+  constructor(private login: UserAuthenticationService, private header: ChangeScaleService, private http: Http) {
   }
 
-  addToHistory(location: string) {
+  saveLocation(location: string) {
 
     const current = this.login.getCurrentUser();
     if (current.history.indexOf(location) === -1) {
@@ -21,6 +21,14 @@ export class DashboardService {
     }
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
+    // users.forEach((user) => {
+    //   if (user.email === current.email && user.password === current.password) {
+    //     if (user.history.some(historyLocation => historyLocation === location)) {
+    //       users.history.push(location);
+    //     }
+    //     break;
+    //   }
+    // });
     for (let user of users) {
       if (user.email === current.email && user.password === current.password) {
         if (user.history.indexOf(location) === -1) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class HeaderService {
+export class ChangeScaleService {
 
   private scale: string;
   constructor() {

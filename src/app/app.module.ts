@@ -8,9 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
-import { LoginService } from './api/login_service/login.service';
-import { DashboardService } from './api/dashboard_service/dashboard.service';
-import { HeaderService } from './api/header_service/header.service';
+import { UserAuthenticationService } from './api/UserAuthentication_service/UserAuthentication.service';
+import { WeatherAPIService } from './api/WeatherAPI_service/WeatherAPI.service';
+import { ChangeScaleService } from './api/ChangeScale_service/ChangeScale.service';
 
 const appRoutes: Routes = [
   {
@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpModule
   ],
-  providers: [LoginService, DashboardService, HeaderService, AuthenticationGuard],
+  providers: [UserAuthenticationService, WeatherAPIService, ChangeScaleService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

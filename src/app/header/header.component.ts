@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginService } from '../api/login_service/login.service';
-import { HeaderService } from '../api/header_service/header.service';
-import { UserClass } from '../api/Classes/user';
-import { DashboardService } from '../api/dashboard_service/dashboard.service';
+import { UserAuthenticationService } from '../api/UserAuthentication_service/UserAuthentication.service';
+import { ChangeScaleService } from '../api/ChangeScale_service/ChangeScale.service';
+import { User } from '../api/Classes/user';
+import { WeatherAPIService } from '../api/WeatherAPI_service/WeatherAPI.service';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +13,13 @@ import { DashboardService } from '../api/dashboard_service/dashboard.service';
 })
 export class HeaderComponent implements OnInit {
 
-  currentUser: UserClass;
+  currentUser: User;
   currentScale: string;
 
   constructor(private router: Router,
-              private login: LoginService,
-              private dashboard: DashboardService,
-              private header: HeaderService) {
+              private login: UserAuthenticationService,
+              private dashboard: WeatherAPIService,
+              private header: ChangeScaleService) {
     this.currentScale = 'Celsius';
   }
 

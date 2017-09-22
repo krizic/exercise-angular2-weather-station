@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { LoginService } from '../api/login_service/login.service';
-import { DashboardService } from '../api/dashboard_service/dashboard.service';
-import { HeaderService } from '../api/header_service/header.service';
-import { WeatherClass } from '../api/Classes/weather';
-import { UserClass } from '../api/Classes/user';
+import { UserAuthenticationService } from '../api/UserAuthentication_service/UserAuthentication.service';
+import { WeatherAPIService } from '../api/WeatherAPI_service/WeatherAPI.service';
+import { ChangeScaleService } from '../api/ChangeScale_service/ChangeScale.service';
+import { Weather } from '../api/Classes/weather';
+import { User } from '../api/Classes/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,15 +14,15 @@ import { UserClass } from '../api/Classes/user';
 })
 export class DashboardComponent implements OnInit {
 
-  currentUser: UserClass;
+  currentUser: User;
   email = 'anonymous@gmail.com';
   history: string[] = this.login.getCurrentUser().history;
-  currentWeather: WeatherClass;
+  currentWeather: Weather;
   temperature: any;
 
-  constructor(private login: LoginService,
-              private dashboard: DashboardService,
-              private header: HeaderService,
+  constructor(private login: UserAuthenticationService,
+              private dashboard: WeatherAPIService,
+              private header: ChangeScaleService,
               private http: Http) {}
 
   ngOnInit() {
@@ -47,14 +47,14 @@ export class DashboardComponent implements OnInit {
       (res: Response) => {
         const weatherCity = res.json().query.results.channel;
         this.temperature = this.dashboard.convertTemperature(weatherCity.item.condition.temp);
-        this.currentWeather = new WeatherClass(   weatherCity.location.city + ', ' + weatherCity.location.country,
+        this.currentWeather = new Weather(   weatherCity.location.city + ', ' + weatherCity.location.country,
                                                   this.temperature,
                                                   weatherCity.item.condition.text,
                                                   weatherCity.atmosphere.humidity,
                                                   weatherCity.wind.speed);
     });
 
-    this.dashboard.addToHistory(location);
+    this.dashboard.saveLocation(location);
     this.currentUser = this.login.getCurrentUser();
     this.history = this.currentUser.history;
   }

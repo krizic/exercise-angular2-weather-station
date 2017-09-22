@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { UserClass } from '../Classes/user';
-import { WeatherClass } from '../Classes/weather';
-import { DashboardService } from '../dashboard_service/dashboard.service';
+import { User } from '../Classes/user';
+import { Weather } from '../Classes/weather';
+import { WeatherAPIService } from '../WeatherAPI_service/WeatherAPI.service';
 
 @Injectable()
-export class LoginService {
+export class UserAuthenticationService {
 
   private isUserLoggedIn;
 
@@ -21,7 +21,7 @@ export class LoginService {
     return this.isUserLoggedIn;
   }
 
-  getCurrentUser(): UserClass {
+  getCurrentUser(): User {
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -36,10 +36,10 @@ export class LoginService {
 
   setCurrentUser(email: string, password: string) {
     const users = JSON.parse(localStorage.getItem('users'));
-    let user: UserClass;
+    let user: User;
     for (let u of users) {
       if (u.email === email && u.password === password) {
-         user = new UserClass(u.email, u.password, u.history);
+         user = new User(u.email, u.password, u.history);
         break;
       }
     }

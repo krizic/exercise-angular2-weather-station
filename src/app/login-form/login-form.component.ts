@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../api/login_service/login.service';
-import { UserClass } from '../api/Classes/user';
+import { UserAuthenticationService } from '../api/UserAuthentication_service/UserAuthentication.service';
+import { User } from '../api/Classes/user';
 
 @Component({
   selector: 'app-login-form',
@@ -10,9 +10,9 @@ import { UserClass } from '../api/Classes/user';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router: Router, private login: LoginService) { }
+  constructor(private router: Router, private login: UserAuthenticationService) { }
 
-  currentUser: UserClass;
+  currentUser: User;
 
   ngOnInit() {
     this.currentUser = this.login.getCurrentUser();
