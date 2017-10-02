@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
     return this.currentWeather == null ? false : true;
   }
 
-  showWeather(e, location) {
+  showWeather(e, location: string, button?: boolean) {
 
     const apiString = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20'
     + 'where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22'
@@ -54,8 +54,22 @@ export class DashboardComponent implements OnInit {
                                                   weatherCity.wind.speed);
     });
 
-    this.dashboard.saveLocation(location);
+    if (!button) {
+      this.dashboard.saveLocation(location);
+    }
     this.currentUser = this.login.getCurrentUser();
     this.history = this.currentUser.history;
+  }
+
+  removeFromHistory(location: string) {
+    event.cancelBubble = true;
+    if (event.stopPropagation) {
+      event.stopPropagation();
+    }
+
+    this.dashboard.removeLocation(location);
+    this.currentUser = this.login.getCurrentUser();
+    this.history = this.currentUser.history;
+    this.currentWeather = null;
   }
 }

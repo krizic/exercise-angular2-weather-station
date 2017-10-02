@@ -1,5 +1,5 @@
 //SCSS variables
-$gray_color: #666666;
+$gray_color: #777;
 $lightgray_color: #D8D8D8;
 $sky_color: #00BFFF;
 $font_nova: 'Nova Flat';
@@ -85,7 +85,11 @@ $sky_border: 0.125rem solid $sky_color;
     text-align: center;
     //vertical-align: center;
     padding: 0.625rem;
-    margin: 0.625rem 0.625rem ;
+    margin: 0.625rem 0.625rem;
+    position: relative;
+}
+.history-item > p {
+    margin-top: 15px;
 }
 .history-item:hover {
     flex: 1;
@@ -113,6 +117,26 @@ $sky_border: 0.125rem solid $sky_color;
     padding: 0.5rem 1rem;
     background-color: $sky_color;
     border: 0.125rem solid $gray_color;
+}
+.close-btn {
+    color: $gray_color;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    // z-index:50;
+    text-decoration: none;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+}
+.close-btn::after {
+    content: '✖';
+}
+.close-btn::hover {
+    color: $lightgray_color;
 }
 
 @media (min-width: 900px) {

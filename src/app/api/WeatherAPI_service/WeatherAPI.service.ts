@@ -45,13 +45,31 @@ export class WeatherAPIService {
     console.log('** currentUser ** from LC', localStorage.getItem('currentUser'));
   }
 
+  removeLocation(location: string) {
+    const current = this.login.getCurrentUser();
+    const locationIndex = current.history.indexOf(location);
+    current.history.splice(locationIndex, 1);
+
+    localStorage.setItem('currentUser', JSON.stringify(current));
+
+    /* redefine */
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    for (let user of users) {
+      if (user.email === current.email && user.password === current.password) {
+        user.history.splice(locationIndex, 1);
+        break;
+      }
+    }
+    localStorage.setItem('users', JSON.stringify(users));
+   }
+
   convertTemperature(temperature: any) {
     if (this.header.getScale() === 'C') {
       temperature = (temperature - 32) * 5 / 9;
-      temperature = temperature + 'C';
+      temperature = temperature + ' C';
     }else {
       temperature = temperature * 9 / 5 + 32;
-      temperature = temperature + 'F';
+      temperature = temperature + ' F';
     }
     return temperature;
   }

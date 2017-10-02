@@ -10,8 +10,9 @@
     <div class="history">
       <h5 class="history-title">Your search history:</h5>
       <div class="history-container">
-        <div class="history-item" *ngFor="let item of history">
+        <div class="history-item" *ngFor="let item of history" (click) = "showWeather($event, item, true)">
           <!-- Show not only name, but also degrees and delete possibility -->
+          <button (click)= "removeFromHistory(item)" class="close-btn"></button>
           <p>{{item}}</p>
         </div>
       </div>
