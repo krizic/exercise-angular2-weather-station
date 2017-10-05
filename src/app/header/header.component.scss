@@ -1,0 +1,46 @@
+//SCSS variables
+$gray_color: #666666;
+$lightgray_color: #D8D8D8;
+$sky_color: #00BFFF;
+$font_nova: 'Nova Flat';
+$gray_border: 0.19rem solid $gray_color;
+$lightgray_border: 0.0625rem solid $lightgray_color;
+
+header {
+    background-color: $sky_color;
+    color: white;
+    padding: 1.25rem 1.9rem;
+    margin-bottom: 1.9rem;
+}
+.header {
+    display: flex;
+    
+}
+.title {
+    flex: 3;
+    font-family: $font_nova;
+    font-size: 1.5rem;
+}
+.settings {
+    flex: 1;
+    text-align: right;
+}
+.icon {
+    background-color: $sky_color;
+    width: 2.1rem;
+}
+.celsiousBtn, .logoutBtn {
+    width: 35%;
+    //margin-top: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: $gray_color;
+    border: 0.125rem solid $gray_color;
+}
+
+.celsiousBtn:hover , .logoutBtn:hover {
+    width: 35%;
+    //margin-top: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: $lightgray_color;
+    border: 0.125rem solid $gray_color; 
+}

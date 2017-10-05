@@ -1,0 +1,43 @@
+<div class="dashboard-screen">
+
+  <div class="dash-left">
+
+    <div class="user-data">
+        <h5 class="your_profile_title">Your profile:</h5>
+        <p><b>Email: </b>{{email}}</p>
+    </div>
+
+    <div class="history">
+      <h5 class="history-title">Your search history:</h5>
+      <div class="history-container">
+        <div class="history-item" *ngFor="let item of history" (click) = "showWeather($event, item, true)">
+          <!-- Show not only name, but also degrees and delete possibility -->
+          <button (click)= "removeFromHistory(item)" class="close-btn"></button>
+          <p>{{item}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dash-right">
+
+    <div class="search-group">
+        <label for="searchLocation"><h5>Search location:</h5></label>
+        <input #location type="text" class="search-input" placeholder="Location" id="searchLocation">
+        <button class="btn btn-primary search-weather-btn" (click) = "showWeather($event, location.value)">Find</button>
+    </div>
+
+    <div class="weather-desc-container" *ngIf = "weather()">
+
+      <h5 class="weather-desc-city">{{currentWeather.cityName}}</h5>
+      <p class="weather-temp">Temperature: {{currentWeather.temp}}</p>
+      <p class="weather-kind">Kind: {{currentWeather.weatherKind}}</p>
+      <p class="weather-min">Humidity: {{currentWeather.humidity}}%</p>
+      <p class="weather-max">Wind speed: {{currentWeather.wind}} mph</p>
+
+    </div>
+
+  </div>
+
+</div>

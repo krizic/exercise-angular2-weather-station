@@ -6,7 +6,9 @@ Requirements:
     
   * Create Angular app that can fetch weather info using Yahoo Weather Public API  `https://developer.yahoo.com/weather/`
   * App should have basic knowledge of who is currently "logged in"
+      * Current user needs to be stored in localStorage (email, password, preferences)
   * Anonymous users will be presented with LogIn screen and rest of app will be unavailable for them
+      * If the user is not logged out, whenever he access the app, he will see the dashboard, otherwise he will see the login page
   * Authenticated User will be presented with dashboard-like page
   * User can add new location he wants to see weather in and that will be saved for him if he re-logs later
   * All locations (with their current weather conditions) he earlier specified are presented on dashboard
@@ -15,4 +17,6 @@ Requirements:
   * Anyone can log in providing any valid email
   * For each user, app will store separate preferences
   * In a settings panel user can set temperature units for himself (F, C)
+      * Settings is visible in header only when user is logged in
   * User can log out
+      * This can also be done in settings

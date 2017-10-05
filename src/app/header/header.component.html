@@ -1,0 +1,10 @@
+<header class="header">
+  <div class="title">
+    Weather Station App
+  </div>
+
+  <div *ngIf= "showSettings()" class="settings">
+    <button class="btn btn-primary celsiousBtn" (click) = "changeScale()">{{currentScale}}</button>
+    <button class="btn btn-primary logoutBtn" (click) = "logout()">Log out</button>
+  </div>
+</header>

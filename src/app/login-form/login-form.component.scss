@@ -1,0 +1,41 @@
+//SCSS variables
+$gray_color: #666666;
+$lightgray_color: #D8D8D8;
+$sky_color: #00BFFF;
+$font_nova: 'Nova Flat';
+$gray_border: 0.19rem solid $gray_color;
+$lightgray_border: 0.0625rem solid $lightgray_color;
+
+.login-screen {
+    display: flex;
+    justify-content: center;
+}
+
+.app-login-form {
+    border: $gray_border;
+    padding: 1.25rem 1.25rem;
+    flex: 0.29; 
+}
+
+.loginTitle {
+    font-family: $font_nova;
+    margin: 1.9rem 0.625rem;
+    text-align: center;
+}
+
+.inputForm {
+    font-family: $font_nova;
+    margin: 1.25rem 1.25rem; 
+}
+
+.buttons {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+.login-btn {
+    width: 30%;
+    padding: 0.625rem 1.25rem;
+    background-color: $sky_color;
+    border: 0.125rem solid $gray_color;
+}
