@@ -66,9 +66,11 @@ export class WeatherAPIService {
   convertTemperature(temperature: any) {
     if (this.header.getScale() === 'C') {
       temperature = (temperature - 32) * 5 / 9;
+      temperature = temperature.toFixed(2);
       temperature = temperature + ' C';
     }else {
       temperature = temperature * 9 / 5 + 32;
+      temperature = temperature.toFixed(2);
       temperature = temperature + ' F';
     }
     return temperature;

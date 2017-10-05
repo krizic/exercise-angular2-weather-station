@@ -132,10 +132,10 @@ $sky_border: 0.125rem solid $sky_color;
     overflow: hidden;
     outline:none;
 }
-.close-btn::after {
+.close-btn:after {
     content: '✖';
 }
-.close-btn::hover {
+.close-btn:hover {
     color: $lightgray_color;
 }
 
